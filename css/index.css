@@ -1,0 +1,53 @@
+body {
+  background-color: #ffffff;
+  margin: 0;
+  overflow: hidden;
+}
+
+#input_text {
+  position: relative;
+  display: block;
+  font-size: 16px;
+  padding: 5px;
+  text-align: center;
+}
+
+#title {
+  position: relative;
+  display: block;
+  color: #fff;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.bottom {
+  position: absolute;
+  display: block;
+  left: 50%;
+  bottom: 0px;
+  transform: translateX(-50%);
+}
+
+#fps {
+  position: relative;
+  display: block;
+  color: #fff;
+  padding: 5px;
+}
+
+.top {
+  position: absolute;
+  display: block;
+  top: 0%;
+  left: 0%;
+}
+
+.frame {
+  position: relative;
+  display: inline-block;
+}
+
+#canvas {
+  position: relative;
+  display: block;
+}
