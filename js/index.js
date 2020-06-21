@@ -76,30 +76,30 @@ function getTextData(s, font) {
   return buffer.getImageData(0, 0, tw, th);
 }
 
-function createTextParticle(data) {
-  if (data == undefined) {
+function createTextParticle(textData) {
+  if (textData == undefined) {
     return {
       data: [],
       width: 0,
       height: 0,
     };
   }
-  const temp = [];
-  for (let i = 0; i < data.width; i++) {
-    for (let j = 0; j < data.height; j++) {
-      const index = (j * data.width + i) * 4;
-      if (data.data[index + 3] > 0) {
-        temp.push({
-          pos: [/*cWidth*/ -data.width * 0.5 + i, /*cHeight*/ -data.height * 0.5 + j],
-          color: [data.data[index] / 255, data.data[index + 1] / 255, data.data[index + 2] / 255, 1],
+  const data = [];
+  for (let i = 0; i < textData.width; i++) {
+    for (let j = 0; j < textData.height; j++) {
+      const index = (j * textData.width + i) * 4;
+      if (textData.data[index + 3] > 0) {
+        data.push({
+          pos: [-textData.width * 0.5 + i, -textData.height * 0.5 + j],
+          color: [textData.data[index] / 255, textData.data[index + 1] / 255, textData.data[index + 2] / 255, 1],
         });
       }
     }
   }
   return {
-    data: temp,
-    width: data.width,
-    height: data.height,
+    data: data,
+    width: textData.width,
+    height: textData.height,
   };
 }
 
