@@ -5,26 +5,28 @@ import { Vector, VectorE } from "./vector.js";
 import { Particle, Particles } from "./particle.js";
 
 //頂點著色器
-const VSHADER_SOURCE =
-  "attribute vec2 a_position;" +
-  "attribute vec4 a_color;" +
-  "attribute float a_size;" +
-  "varying vec4 v_color;" +
-  "uniform mat3 u_matrix;" +
-  "void main() {" +
-  "gl_Position = vec4((u_matrix * vec3(a_position, 1)).xy, 0, 1);" +
-  "v_color = a_color; " +
-  "gl_PointSize = a_size; " +
-  "} ";
+const VSHADER_SOURCE = `
+  attribute vec2 a_position;
+  attribute vec4 a_color;
+  attribute float a_size;
+  varying vec4 v_color;
+  uniform mat3 u_matrix;
+  void main() {
+    gl_Position = vec4((u_matrix * vec3(a_position, 1)).xy, 0, 1);
+    v_color = a_color;
+    gl_PointSize = a_size;
+  }
+`;
 //片段著色器
-const FSHADER_SOURCE =
-  "precision mediump float;" +
-  "varying vec4 v_color;" +
-  "void main() {" +
-  "if(v_color[3] > 0.0) {" +
-  "gl_FragColor = v_color;" +
-  "}" +
-  "}";
+const FSHADER_SOURCE = `
+  precision mediump float;
+  varying vec4 v_color;
+  void main() {
+    if(v_color[3] > 0.0) {
+      gl_FragColor = v_color;
+    }
+  }
+`;
 
 class Buffer {
   constructor(shaderProgram) {
